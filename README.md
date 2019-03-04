@@ -1,6 +1,6 @@
 ﻿# Sintetizador 3D
 
-Descripción breve del proyecto a realizar (2-3 frases).
+El proyecto consiste en un cubo de leds, con dimensiones mínimas de 4x4x4 que en función de la frecuencia y el volumen de sonidos que capte un sensor de sonido, se iluminen con colores correspondientes a cada frecuencia y altura correspondiente al volumen. También incluirá un módulo para interactuar con el cubo de leds manualmente.
 
 ## Integrantes del equipo
 
@@ -9,4 +9,4 @@ Descripción breve del proyecto a realizar (2-3 frases).
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+El trabajo pretende ilustrar de forma visual el sonido, como se comportan sus frecuencias y lo fascinante que puede ser mezclar luz y sonido. Puede ser usado a nivel instructivo, decorativo e incluso artístico. Creemos que va a ser un proyecto muy bonito.
