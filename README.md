@@ -13,6 +13,7 @@ Los componentes clave serán:
 
 * Marcelo Luna Diaz, @mlunad88i
 * Francisco Padilla De Aguiar, @fpadilla00
+* Maria Lisa Salto Molodojen, 
 
 ## Objetivos del trabajo
 
