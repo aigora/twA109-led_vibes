@@ -1,1 +1,31 @@
 //Código micro
+int led = 12;
+int led2 = 9;
+int rango =700  ; //es el rango de los sonidos que coge
+int volumen;
+
+void setup() {
+Serial.begin(9600);
+pinMode(led, OUTPUT);
+pinMode(led2,OUTPUT);
+}
+
+void loop() {
+
+volumen = analogRead(A0);
+
+Serial.println(volumen);
+delay(50); 
+
+digitalWrite(led,LOW); //Se inicializa el LED rojo a apagado
+digitalWrite(led2,LOW); //Se inicializa el LED verde a apagado
+if(volumen>=rango){
+digitalWrite(led, HIGH); //Se enciende el LED rojo
+digitalWrite(led2,LOW); //Se apaga el LED verde
+}
+else{
+digitalWrite(led, LOW); //Se apaga el LED rojo
+digitalWrite(led2,HIGH); //Se enciende el LED verde
+}
+
+}
