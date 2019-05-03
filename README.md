@@ -23,7 +23,12 @@ El trabajo pretende ilustrar de forma visual el sonido, como se comportan sus fr
 
 Las funciones a utilizar realizarán las siguientes tareas:
 
-* Recibir y almacenar la señal proveniente del micrófono.
+* Recibir y almacenar la señal proveniente del micrófono. Se necesitará un amplificador, ya sea incorporado o no.
 * Determinar la intensidad del sonido (medida en decibelios).
 * Estudiar la frecuencia del sonido a través de la transformada rápida de Fourier (FFT) o la transformada rápida de Hartley (FHT).
 * Representar los cambios en el tiempo de estos datos encendiendo y apagando los leds que correspondan.
+
+## Recursos
+Amplificador:
+  http://www.educachip.com/construye-tu-propio-amplificador-de-audio/
+  https://forum.arduino.cc/index.php?topic=164436.0
