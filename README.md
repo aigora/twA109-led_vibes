@@ -30,5 +30,5 @@ Las funciones a utilizar realizarán las siguientes tareas:
 
 ## Recursos
 Amplificador:
-  http://www.educachip.com/construye-tu-propio-amplificador-de-audio/
-  https://forum.arduino.cc/index.php?topic=164436.0
+  * http://www.educachip.com/construye-tu-propio-amplificador-de-audio/
+  * https://forum.arduino.cc/index.php?topic=164436.0
