@@ -1,49 +1,7 @@
-#include "arduinoFFT.h"
-#define N 128 //numero de muestras (debe ser múltiplo de 2)
-#define F 1000  //frecuencia de muestreo (debe ser inferior a 10000 por limitaciones del ADC de Arduino
-
-//
-#define PIN_A 2
-#define PIN_B 3
-#define PIN_C 4
-
-#define PIN_D 7
-#define PIN_E 6
-#define PIN_F 5
-
-#define PIN_G 8
-#define PIN_H 9
-#define PIN_I 10
-
-int volumen;
-int salida;
-void encenderLed1(int);
-void encenderLed2(int);
-void encenderLed3(int);
-
-arduinoFFT FFT = arduinoFFT();
-
-void setup() {
-    Serial.begin(9600);
-    int i;
-    //  para ver si se encienden bien los leds(matriz)
-    for(int i=1; i<=6; i++)
-    {
-        encenderLed1(i);
-        delay(100);
-        encenderLed2(i);
-        delay(100);
-        encenderLed3(i);
-        delay(100);
-    }
-  
-  }
-
-void loop() {
-  
-  //La FFT emplea números imaginarios en sus cálculos
+//La FFT emplea números imaginarios en sus cálculos
   int i;
   float pb = 0.0;
+  float pb2 = 0.0;
   float mic,alfa = 0.5;
   
   double vReal[N];  //Parte real
@@ -53,7 +11,7 @@ void loop() {
   for(int i=0; i<N; i++)
     {
         microseconds = micros();    
-        mic = 1.1*analogRead(A0);
+        mic = 2*analogRead(A0);
         pb = alfa * mic + (1 - alfa) * pb;
         vReal[i]=pb;
         vImag[i] = 0; //Como los valores que recibimos provienen del micrófono (números reales), la parte imaginaria debe ser 0
@@ -69,32 +27,35 @@ void loop() {
 
     Serial.print("Frecuencia: ");
     Serial.println(peak); // Se imprime el valor en Hz de la frecuencia dominante en la muestra
-
+    Serial.println(pb);
     //Mandamos los datos a los leds
-    int rango=0;
-    /* pb = mic*log(mic)/10;*/
+    int rango=1;
+    
     volumen = pb;
-    rango=pb/6;
+  
     if (peak>=0 && peak<200){
         for(i=1;i<=6;i++){
-          if(rango<=0 && rango<i*pb/6)
+          //if(rango<=0 && rango<i*pb/6)
             encenderLed1(i);
+            delay(100);
         }
     }
-    if (peak>200 && peak<=400){
+    else if (peak>200 && peak<=400){
         for(i=1;i<=6;i++){
-          if(rango<=0 && rango<i*pb/6)
+          //if(rango<=0 && rango<i*pb/6)
             encenderLed2(i);
+            delay(100);
         }
     }
-    if (peak>400 && peak<=600){
+   else if (peak>400 && peak<=600){
         for(i=1;i<=6;i++){
-          if(rango<=0 && rango<i*pb/6)
+          //if(rango<=0 && rango<i*pb/6)
             encenderLed3(i);
+            delay(100);
         }
     }
     
-    delay(10);
+
 }
     
 // Función que pondrá en los estados correctos para encender un LED (HIGH, LOW e INPUT)
