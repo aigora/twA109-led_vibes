@@ -19,6 +19,8 @@ void setup() {
     digitalWrite(i,LOW);
     delay(100);
   };
+  //
+  
   }
 
 void loop() {
@@ -53,17 +55,18 @@ void loop() {
     Serial.println(peak); // Se imprime el valor en Hz de la frecuencia dominante en la muestra
 
     //Mandamos los datos a los leds
-    int rango=0;
+    int rango=0,rango2=0;
     int contador=0;
     int i;
     /* volumen = mic*log(mic)/10;*/
-    volumen = mic;
+    volumen = pb;
     Serial.println(volumen);
     for (i=5;i<=11;i++){
       contador=contador+1;
       //Fila de 6 leds
+      rango2=(rango2+(contador*peak)/3);
       rango=(rango+(contador*volumen)/6);
-      if (rango>=0 && rango<=contador*volumen/6){
+      if (rango>=0 && rango<=contador*volumen/6 && rango2>=0 && rango2<=(contador*peak)/3){
         digitalWrite(i,HIGH);
       }
     }
@@ -72,4 +75,7 @@ void loop() {
     };
     
     delay(10);
+    //
+    
+    
 }
