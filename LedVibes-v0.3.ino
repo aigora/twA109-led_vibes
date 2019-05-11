@@ -17,27 +17,15 @@
 
 int volumen;
 int salida;
-
+void encenderLed1(int);
+void encenderLed2(int);
+void encenderLed3(int);
 
 arduinoFFT FFT = arduinoFFT();
 
 void setup() {
-  Serial.begin(9600);
-  int i;
-  //Encender y apagar todos los LEDS para probar que funcionan
-  for(i=5;i<=11;i++){
-    pinMode(i,OUTPUT);
-  }
-  for (i=5;i<=11;i++){
-    digitalWrite(i,HIGH);
-    delay(100);
-  };
-  for (i=5;i<=11;i++){
-    digitalWrite(i,LOW);
-    delay(100);
-  };
-  //
-  
+    Serial.begin(9600);
+    int i;
     //  para ver si se encienden bien los leds(matriz)
     for(int i=1; i<=6; i++)
     {
@@ -83,27 +71,31 @@ void loop() {
     Serial.println(peak); // Se imprime el valor en Hz de la frecuencia dominante en la muestra
 
     //Mandamos los datos a los leds
-    int rango=0,rango2=0;
-    int contador=0;
-    int i;
-    /* volumen = mic*log(mic)/10;*/
+    int rango=0;
+    /* pb = mic*log(mic)/10;*/
     volumen = pb;
-    Serial.println(volumen);
-    for (i=5;i<=11;i++){
-      contador=contador+1;
-      //Fila de 6 leds
-      rango2=(rango2+(contador*peak)/3);
-      rango=(rango+(contador*volumen)/6);
-      if (rango>=0 && rango<=contador*volumen/6 && rango2>=0 && rango2<=(contador*peak)/3){
-        digitalWrite(i,HIGH);
-      }
+    rango=pb/6;
+    if (peak>=0 && peak<200){
+        for(i=1;i<=6;i++){
+          if(rango<=0 && rango<i*pb/6)
+            encenderLed1(i);
+        }
     }
-    for (i=5;i<=11;i++){
-      digitalWrite(i,LOW);
-    };
+    if (peak>200 && peak<=400){
+        for(i=1;i<=6;i++){
+          if(rango<=0 && rango<i*pb/6)
+            encenderLed2(i);
+        }
+    }
+    if (peak>400 && peak<=600){
+        for(i=1;i<=6;i++){
+          if(rango<=0 && rango<i*pb/6)
+            encenderLed3(i);
+        }
+    }
     
     delay(10);
-    //
+}
     
 // Función que pondrá en los estados correctos para encender un LED (HIGH, LOW e INPUT)
 void ponerEstados(int pinHigh, int pinLow, int pinInput)
@@ -190,10 +182,6 @@ void encenderLed3(int led_num)
         case 6:
             ponerEstados(PIN_I,PIN_G,PIN_H);
             break;   
-        
     }
-    
-}
- 
     
 }
