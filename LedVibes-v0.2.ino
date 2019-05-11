@@ -6,6 +6,19 @@ arduinoFFT FFT = arduinoFFT();
 
 void setup() {
   Serial.begin(9600);
+  int i;
+  //Encender y apagar todos los LEDS para probar que funcionan
+  for(i=5;i<=11;i++){
+    pinMode(i,OUTPUT);
+  }
+  for (i=5;i<=11;i++){
+    digitalWrite(i,HIGH);
+    delay(100);
+  };
+  for (i=5;i<=11;i++){
+    digitalWrite(i,LOW);
+    delay(100);
+  };
   }
 
 void loop() {
@@ -39,4 +52,24 @@ void loop() {
     Serial.print("Frecuencia: ");
     Serial.println(peak); // Se imprime el valor en Hz de la frecuencia dominante en la muestra
 
+    //Mandamos los datos a los leds
+    int rango=0;
+    int contador=0;
+    int i;
+    /* volumen = mic*log(mic)/10;*/
+    volumen = mic;
+    Serial.println(volumen);
+    for (i=5;i<=11;i++){
+      contador=contador+1;
+      //Fila de 6 leds
+      rango=(rango+(contador*volumen)/6);
+      if (rango>=0 && rango<=contador*volumen/6){
+        digitalWrite(i,HIGH);
+      }
+    }
+    for (i=5;i<=11;i++){
+      digitalWrite(i,LOW);
+    };
+    
+    delay(10);
 }
