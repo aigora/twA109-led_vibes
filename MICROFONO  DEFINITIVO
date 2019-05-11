@@ -11,9 +11,9 @@ void setup() {
 void loop() {
   
   //La FFT emplea números imaginarios en sus cálculos
-  int i, mic;
-  int pb = 0;
-  float alfa = 0.5;
+  int i;
+  float pb = 0.0;
+  float mic,alfa = 0.5;
   
   double vReal[N];  //Parte real
   double vImag[N];  //Parte imaginaria
@@ -22,7 +22,7 @@ void loop() {
   for(int i=0; i<N; i++)
     {
         microseconds = micros();    
-        mic = analogRead(A0);
+        mic = 1.1*analogRead(A0);
         pb = alfa * mic + (1 - alfa) * pb;
         vReal[i]=pb;
         vImag[i] = 0; //Como los valores que recibimos provienen del micrófono (números reales), la parte imaginaria debe ser 0
