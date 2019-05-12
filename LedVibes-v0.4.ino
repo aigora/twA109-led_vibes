@@ -1,4 +1,48 @@
-//La FFT emplea números imaginarios en sus cálculos
+#include "arduinoFFT.h"
+#define N 128 //numero de muestras (debe ser múltiplo de 2)
+#define F 1000  //frecuencia de muestreo (debe ser inferior a 10000 por limitaciones del ADC de Arduino
+
+//
+#define PIN_A 2
+#define PIN_B 3
+#define PIN_C 4
+
+#define PIN_D 7
+#define PIN_E 6
+#define PIN_F 5
+
+#define PIN_G 8
+#define PIN_H 9
+#define PIN_I 10
+
+int volumen;
+int salida;
+void encenderLed1(int);
+void encenderLed2(int);
+void encenderLed3(int);
+
+arduinoFFT FFT = arduinoFFT();
+
+void setup() {
+    Serial.begin(9600);
+    int i;
+    //  para ver si se encienden bien los leds(matriz)
+    for(int i=1; i<=6; i++)
+    {
+        encenderLed1(i);
+        delay(100);
+        encenderLed2(i);
+        delay(100);
+        encenderLed3(i);
+        delay(100);
+    }
+
+  }
+
+void loop() {
+  
+//La FFT emplea números complejos en sus cálculos
+  
   int i;
   float pb = 0.0;
   float pb2 = 0.0;
