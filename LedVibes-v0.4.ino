@@ -77,23 +77,23 @@ void loop() {
     
     volumen = pb;
   
-    if (peak>=0 && peak<200){
+    if (peak>=0 && peak<=200){
         for(i=1;i<=6;i++){
-          //if(rango<=0 && rango<i*pb/6)
+          //if(rango>=0 && rango<i*pb/6)
             encenderLed1(i);
             delay(100);
         }
     }
     else if (peak>200 && peak<=400){
         for(i=1;i<=6;i++){
-          //if(rango<=0 && rango<i*pb/6)
+          //if(rango>=0 && rango<i*pb/6)
             encenderLed2(i);
             delay(100);
         }
     }
    else if (peak>400 && peak<=600){
         for(i=1;i<=6;i++){
-          //if(rango<=0 && rango<i*pb/6)
+          //if(rango>=0 && rango<i*pb/6)
             encenderLed3(i);
             delay(100);
         }
