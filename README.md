@@ -32,3 +32,6 @@ Las funciones a utilizar realizarán las siguientes tareas:
 Amplificador:
   * http://www.educachip.com/construye-tu-propio-amplificador-de-audio/
   * https://forum.arduino.cc/index.php?topic=164436.0
+  
+Reducción de ruido: filtros de paso bajo y de paso alto:
+  * https://www.luisllamas.es/arduino-paso-bajo-exponencial/
