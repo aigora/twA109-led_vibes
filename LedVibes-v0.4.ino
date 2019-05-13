@@ -1,6 +1,6 @@
 #include "arduinoFFT.h"
 #define N 128 //numero de muestras (debe ser múltiplo de 2)
-#define F 1000  //frecuencia de muestreo (debe ser inferior a 10000 por limitaciones del ADC de Arduino
+#define F 1000  //frecuencia de muestreo (debe ser inferior a 10000 por limitaciones del ADC de Arduino)
 
 //
 #define PIN_A 2
@@ -51,18 +51,38 @@ void loop() {
   double vReal[N];  //Parte real
   double vImag[N];  //Parte imaginaria
   long microseconds;
+  double vMax=0.0;
+  double vMin=3000.0;
+  double recorrido;
+  double media=0.0;
+  double salto;
 
-  for(int i=0; i<N; i++)
+  
+  for(i=0; i<N; i++)
     {
         microseconds = micros();    
         mic = 2*analogRead(A0);
         pb = alfa * mic + (1 - alfa) * pb;
+        media=media+pb;
         vReal[i]=pb;
         vImag[i] = 0; //Como los valores que recibimos provienen del micrófono (números reales), la parte imaginaria debe ser 0
-     
+        
+        if (vMax<vReal[i])
+        {
+          vMax=vReal[i];
+        }
+        else if (vMin>vReal[i])
+        {
+          vMin=vReal[i];
+        }
+        
         while(micros() < (microseconds + 1000)){
         }
     }
+
+    recorrido=vMax-vMin;
+    salto=recorrido/6;
+    media=media/N;
     
     FFT.Windowing(vReal, N, FFT_WIN_TYP_HAMMING, FFT_FORWARD);
     FFT.Compute(vReal, vImag, N, FFT_FORWARD);
@@ -78,25 +98,19 @@ void loop() {
     volumen = pb;
   
     if (peak>=0 && peak<=200){
-        for(i=1;i<=6;i++){
-          //if(rango>=0 && rango<i*pb/6)
+        for(i=1; media <= vMin+i*salto; i++){
             encenderLed1(i);
-            delay(100);
         }
     }
     else if (peak>200 && peak<=400){
-        for(i=1;i<=6;i++){
-          //if(rango>=0 && rango<i*pb/6)
+        for(i=1; media <= vMin+i*salto; i++){
             encenderLed2(i);
-            delay(100);
         }
     }
    else if (peak>400 && peak<=600){
-        for(i=1;i<=6;i++){
-          //if(rango>=0 && rango<i*pb/6)
+        for(i=1; media <= vMin+i*salto; i++){
             encenderLed3(i);
-            delay(100);
-        }
+            }
     }
     
 
