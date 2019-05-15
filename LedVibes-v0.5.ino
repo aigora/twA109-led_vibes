@@ -1,5 +1,5 @@
 #include "arduinoFFT.h"
-#define N 128 //numero de muestras (debe ser múltiplo de 2)
+#define N 128//numero de muestras (debe ser múltiplo de 2)
 #define F 8000  //frecuencia de muestreo (debe ser inferior a 10000 por limitaciones del ADC de Arduino)
 
 #define PIN_A 2
@@ -10,10 +10,31 @@
 #define PIN_E 6
 #define PIN_F 5
 
+#define PIN_G 8
+#define PIN_H 9
+#define PIN_I 10
+
+#define PIN_J 22
+#define PIN_K 24
+#define PIN_L 26
+
+#define PIN_M 28
+#define PIN_N 30
+#define PIN_O 32
+
+#define PIN_P 34
+#define PIN_Q 36
+#define PIN_R 38
+
+
 arduinoFFT FFT = arduinoFFT();
 
 void encenderLed1(int);
 void encenderLed2(int);
+void encenderLed3(int);
+void encenderLed4(int);
+void encenderLed5(int);
+void encenderLed6(int);
 
 void setup() {
    Serial.begin(9600);
@@ -25,11 +46,20 @@ void setup() {
         delay(100);
         encenderLed2(i);
         delay(100);
+        encenderLed3(i);
+        delay(100);
+        encenderLed4(i);
+        delay(100); 
+        encenderLed5(i);
+        delay(100);
+        encenderLed6(i);
+        delay(100);
+        
 }
 }
 void loop() {
   int i,j;
-  int ledsc=2; //Número de leds por columna
+  int ledsc=6; //Número de leds por columna
   int ledsf=6; //Número de leds por fila
   double hz;
   double vReal[N];
@@ -87,8 +117,8 @@ void loop() {
       c++;
     }
 
- for(j=0;j<100;j++)
- {
+   for(j=0;j<100;j++)
+   {
     for(i=0;i<media[0];i++)
     {
       encenderLed1(i);
@@ -97,6 +127,24 @@ void loop() {
     for(i=0;i<media[1];i++)
     {
       encenderLed2(i);
+    }
+    for(i=0;i<media[2];i++)
+    {
+      encenderLed3(i);
+    }
+
+    for(i=0;i<media[3];i++)
+    {
+      encenderLed4(i);
+    }
+    for(i=0;i<media[4];i++)
+    {
+      encenderLed5(i);
+    }
+
+    for(i=0;i<media[5];i++)
+    {
+      encenderLed6(i);
     }
  }
  
@@ -160,6 +208,108 @@ void encenderLed2(int led_num)
             ponerEstados(PIN_F,PIN_D,PIN_E);
             break;   
         
+    }
+    
+}
+void encenderLed3(int led_num)
+{
+    switch(led_num)
+    {
+        case 1:
+            ponerEstados(PIN_G,PIN_H,PIN_I);
+            break;
+        case 2:
+            ponerEstados(PIN_H,PIN_G,PIN_I);
+            break;
+        case 3:
+            ponerEstados(PIN_H,PIN_I,PIN_G);
+            break;
+        case 4:
+            ponerEstados(PIN_I,PIN_H,PIN_G);
+            break;
+        case 5:
+            ponerEstados(PIN_G,PIN_I,PIN_H);
+            break;
+        case 6:
+            ponerEstados(PIN_I,PIN_G,PIN_H);
+            break;   
+    }
+    
+}
+void encenderLed4 (int led_num)
+{
+    switch(led_num)
+    {
+        case 1:
+            ponerEstados(PIN_J,PIN_K,PIN_L);
+            break;
+        case 2:
+            ponerEstados(PIN_K,PIN_J,PIN_L);
+            break;
+        case 3:
+            ponerEstados(PIN_K,PIN_L,PIN_J);
+            break;
+        case 4:
+            ponerEstados(PIN_L,PIN_K,PIN_J);
+            break;
+        case 5:
+            ponerEstados(PIN_J,PIN_L,PIN_K);
+            break;
+        case 6:
+            ponerEstados(PIN_L,PIN_J,PIN_K);
+            break;   
+        
+    }
+    
+}
+void encenderLed5(int led_num)
+{
+    switch(led_num)
+    {
+        case 1:
+            ponerEstados(PIN_M,PIN_N,PIN_O);
+            break;
+        case 2:
+            ponerEstados(PIN_N,PIN_M,PIN_O);
+            break;
+        case 3:
+            ponerEstados(PIN_N,PIN_O,PIN_M);
+            break;
+        case 4:
+            ponerEstados(PIN_O,PIN_N,PIN_M);
+            break;
+        case 5:
+            ponerEstados(PIN_M,PIN_O,PIN_N);
+            break;
+        case 6:
+            ponerEstados(PIN_O,PIN_M,PIN_N);
+            break;   
+        
+    }
+    
+}
+void encenderLed6(int led_num)
+{
+    switch(led_num)
+    {
+        case 1:
+            ponerEstados(PIN_P,PIN_Q,PIN_R);
+            break;
+        case 2:
+            ponerEstados(PIN_Q,PIN_P,PIN_R);
+            break;
+        case 3:
+            ponerEstados(PIN_Q,PIN_R,PIN_P);
+            break;
+        case 4:
+            ponerEstados(PIN_R,PIN_Q,PIN_P);
+            break;
+        case 5:
+            ponerEstados(PIN_P,PIN_R,PIN_Q);
+            break;
+        case 6:
+            ponerEstados(PIN_R,PIN_P,PIN_Q);
+            break;   
     }
     
 }
