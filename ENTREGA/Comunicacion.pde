@@ -17,9 +17,14 @@ void draw()
   if(serial.available()>64)
   {
     while(serial.read()!='2');  //Esperamos a recibir este dato por parte de Arduino para guardar los valores
-    for(i=0;i<64;i++)
+    for(i=0;i<32;i++)
     {
       vReal[i]=serial.read();
+    }
+    while(serial.read()!='3');
+    for(i=0;i<32;i++)
+    {
+      vReal[i+32]=serial.read();
     }
   }
   
