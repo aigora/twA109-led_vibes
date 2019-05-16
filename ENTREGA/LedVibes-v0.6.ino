@@ -89,8 +89,6 @@ void loop() {
   FFT.Compute(vReal, vImag, N, FFT_FORWARD);
   FFT.ComplexToMagnitude(vReal, vImag, N);
 
-  Serial.write(50);
-
   for (i = 0; i < N/2; i++)
   {
     hz = ((i * 1.0 * F) / N);
@@ -102,6 +100,17 @@ void loop() {
     
   }
 
+  Serial.write(50);
+  for(i=0;i<32;i++)
+  {
+    Serial.write(int (vReal[i]+1));
+  }
+
+  Serial.write(51);
+  for(i=0;i<32;i++)
+  {
+    Serial.write(int (vReal[32+i]+1));
+  }
  //Adaptamos los datos que tenemos para poder representarlos en la matriz de leds
  
  double media[ledsc];
