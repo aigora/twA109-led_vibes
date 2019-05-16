@@ -94,10 +94,7 @@ void loop() {
     hz = ((i * 1.0 * F) / N);
 
     vReal[i]= constrain(vReal[i], 0, 50);
-    vReal[i] = map(vReal[i], 0, 50, 0, ledsf);
-    
-    Serial.write(int (vReal[i]+1));
-    
+    vReal[i] = map(vReal[i], 0, 50, 0, ledsf);   
   }
 
   Serial.write(50);
