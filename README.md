@@ -24,7 +24,7 @@ Las funciones a utilizar realizarán las siguientes tareas:
 
 * Recibir y almacenar la señal proveniente del micrófono. 
 * Determinar la intensidad del sonido.
-* Estudiar la frecuencia del sonido a través de la transformada rápida de Fourier (FFT) o la transformada rápida de Hartley (FHT).
+* Estudiar la frecuencia del sonido a través de la transformada rápida de Fourier (FFT).
 * Representar los cambios en el tiempo de estos datos encendiendo y apagando los leds que correspondan.
 
 ## Recursos
