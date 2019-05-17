@@ -1,11 +1,10 @@
-﻿# Ecualizador 3D
+﻿# Analizador de espectro
 
-El proyecto consiste en un cubo de leds, con dimensiones mínimas de 4x4x4 que en función de la frecuencia y el volumen de sonidos que capte un sensor de sonido, se iluminen con colores correspondientes a cada frecuencia y altura correspondiente al volumen. También incluirá un módulo para interactuar con el cubo de leds manualmente.
+Este proyecto consiste en analizador de espectro de leds, con dimensiones de 6x6 que se iluminan en función de las frecuencias y volumen de sonidos que recibe a través de un micrófono.
 Los componentes clave serán:
 
 * Sensores:
   1. Módulo sensor de audio (micrófono).
-  2. Botones para interactuar manualmente.
 * Actuadores:
   1. Leds
 
@@ -23,8 +22,8 @@ El trabajo pretende ilustrar de forma visual el sonido, como se comportan sus fr
 
 Las funciones a utilizar realizarán las siguientes tareas:
 
-* Recibir y almacenar la señal proveniente del micrófono. Se necesitará un amplificador, ya sea incorporado o no.
-* Determinar la intensidad del sonido (medida en decibelios).
+* Recibir y almacenar la señal proveniente del micrófono. 
+* Determinar la intensidad del sonido.
 * Estudiar la frecuencia del sonido a través de la transformada rápida de Fourier (FFT) o la transformada rápida de Hartley (FHT).
 * Representar los cambios en el tiempo de estos datos encendiendo y apagando los leds que correspondan.
 
